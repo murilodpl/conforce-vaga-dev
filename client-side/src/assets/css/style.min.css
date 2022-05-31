@@ -665,22 +665,40 @@ select {
 
 .bg-secondary {
   --tw-bg-opacity: 1;
-  background-color: rgb(178 189 126 / var(--tw-bg-opacity));
-}
-
-.p-6 {
-  padding: 1.5rem;
+  background-color: rgb(116 156 117 / var(--tw-bg-opacity));
 }
 
 .p-4 {
   padding: 1rem;
 }
 
-.text-center {
-  text-align: center;
-}
-
 html {
   --tw-bg-opacity: 1;
-  background-color: rgb(233 217 133 / var(--tw-bg-opacity));
+  background-color: rgb(178 189 126 / var(--tw-bg-opacity));
+}
+
+/* Formulário */
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+input {
+  transition-property: all !important;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-duration: 150ms !important;
+}
+
+input:hover {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(178 189 126 / var(--tw-border-opacity)) !important;
+}
+
+input:focus {
+  --tw-border-opacity: 1 !important;
+  border-color: rgb(178 189 126 / var(--tw-border-opacity)) !important;
+  --tw-ring-opacity: 1 !important;
+  --tw-ring-color: rgb(178 189 126 / var(--tw-ring-opacity)) !important;
 }

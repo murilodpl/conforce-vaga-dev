@@ -5,3 +5,12 @@
 html {
     @apply bg-primary;
 }
+
+/* Formulário */
+form {
+    @apply flex flex-col gap-2;
+}
+
+input {
+    @apply hover:border-primary focus:ring-primary focus:border-primary transition-all !important;
+}
