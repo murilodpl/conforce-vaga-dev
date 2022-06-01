@@ -1,4 +1,4 @@
-import { CadastroIng } from '../components/Cadastro'
+import CadastroIng from '../components/CadastroIng'
 
 export default function Ingrediente() {
     return (

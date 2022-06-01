@@ -3,7 +3,7 @@ import Ingrediente from "./pages/Ingrediente";
 import Lanche from './pages/Lanche';
 
 export default function App() {
-  const [isIngrediente, setIsIngrediente] = useState(false)
+  const [isIngrediente, setIsIngrediente] = useState(true)
 
   return (
     <div className='container bg-secondary p-4'>
