@@ -10,12 +10,17 @@ h1 {
     @apply text-xl lg:text-2xl text-primary font-bold mb-2;
 }
 
+.btnChangePage {
+    @apply px-4 border border-primary text-primary bg-black font-bold uppercase cursor-pointer py-2 hover:border-black hover:text-black hover:bg-primary transition-all;
+}
+
 /* Formulário */
 form {
     @apply grid lg:grid-cols-5 gap-2;
 }
 
-form#formEditarIng {
+form#formEditarIng,
+form#formEditarLanche {
     @apply lg:grid-cols-6;
 }
 
@@ -29,15 +34,15 @@ input[type=submit] {
 }
 
 /* Ingredientes */
-.tableIng tbody tr {
+table tbody tr {
     @apply bg-secondary border-b border-tertiary transition duration-300 ease-in-out hover:bg-[#31363e];
 }
 
-.tableIng tbody td {
+table tbody td {
     @apply text-sm font-light px-6 py-4 whitespace-nowrap;
 }
 
-.tableIng th {
+table th {
     @apply text-sm font-medium text-white px-6 py-4 text-left;
 }
 

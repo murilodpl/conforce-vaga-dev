@@ -8,6 +8,10 @@ export default function App() {
   return (
     <div className='container bg-secondary p-4'>
       {isIngrediente ? <Ingrediente /> : <Lanche />}
+
+      <div className='flex justify-center'>
+        <button className='btnChangePage' type='button' onClick={() => setIsIngrediente(prevIs => !prevIs)}>{(isIngrediente) ? "Lanches" : "Ingredientes"}</button>
+      </div>
     </div>
   )
 }
