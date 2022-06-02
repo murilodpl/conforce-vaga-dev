@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import CadastroIng from '../components/CadastroIng'
+import EditIng from '../components/EditIng'
+import RegisterIng from '../components/RegisterIng'
 import ShowIng from '../components/ShowIng'
 
 export default function Ingrediente() {
@@ -8,8 +9,9 @@ export default function Ingrediente() {
     return (
         <div>
             <h1>Ingrediente</h1>
-            <CadastroIng setChangeIng={setChangeIng} />
-            <ShowIng changeIng={changeIng} />
+            <RegisterIng setChangeIng={setChangeIng} />
+            <EditIng setChangeIng={setChangeIng} />
+            <ShowIng changeIng={changeIng} setChangeIng={setChangeIng} />
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import api from "../services/api"
+import trashSvg from "../assets/img/trash.svg"
 import { useEffect, useState } from 'react'
 
 export default function ShowIng(props) {
@@ -13,7 +14,7 @@ export default function ShowIng(props) {
         async function getAllIng() {
             await api.get("/Ingrediente/GetAll")
                 .then(res => {
-                    console.log(res)
+                    // console.log(res)
                     setIng(res.data.value)
                 })
                 .catch(error => {
@@ -27,7 +28,25 @@ export default function ShowIng(props) {
         return () => setIsLoading(false);
     }, [props.changeIng])
 
-    const ingElement = (ing.length != 0) ? ing.map((ing, index) => <tr key={index}><td>{ing.id}</td><td>{ing.name}</td><td>R$ {ing.value.toFixed(2)}</td></tr>) : false
+    // Functions
+    function deleteIng(id) {
+        api.delete(`/Ingrediente/Delete?id=${id}`)
+            .then(res => {
+                console.log(res)
+                props.setChangeIng(prevIng => !prevIng)
+            })
+            .catch(error => {
+                console.log(error)
+            });
+    }
+
+    const ingElement = (ing.length != 0) ?
+        ing.map((ing, index) => <tr className="relative" key={index}>
+            <td>{ing.id}</td>
+            <td>{ing.name}</td>
+            <td>R$ {ing.value.toFixed(2)}</td>
+            <td><button className="btnDeletar" onClick={() => deleteIng(ing.id)} aria-label="Botão de deletar"><img width="24px" height="24px" src={trashSvg} alt="Icone de Lixeira" /></button></td>
+        </tr>) : false
 
     return (
         <>
@@ -45,6 +64,7 @@ export default function ShowIng(props) {
                                                     <th scope="col">Id</th>
                                                     <th scope="col">Nome</th>
                                                     <th scope="col">Preço</th>
+                                                    <th scope="col">Deletar</th>
                                                 </tr>
                                             </thead>
                                             <tbody className="text-white">
