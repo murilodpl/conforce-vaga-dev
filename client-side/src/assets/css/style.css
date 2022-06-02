@@ -15,6 +15,10 @@ form {
     @apply grid lg:grid-cols-5 gap-2;
 }
 
+form#formEditarIng {
+    @apply lg:grid-cols-6;
+}
+
 input[type=text],
 input[type=number] {
     @apply placeholder:text-gray-400 hover:border-primary focus:ring-primary focus:border-primary transition-all !important;
@@ -35,6 +39,10 @@ input[type=submit] {
 
 .tableIng th {
     @apply text-sm font-medium text-white px-6 py-4 text-left;
+}
+
+.btnDeletar {
+    @apply cursor-pointer hover:brightness-75 transition-all flex;
 }
 
 /* Loading */
