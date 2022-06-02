@@ -31,13 +31,17 @@ export default function CadastroIng(props) {
         api.post("/Ingrediente/CreateEdit", formData)
             .then(res => {
                 console.log(res)
-                setFormData({ id: "", name: "", value: "" })
-                setCheck(prevCheck => ({ ...prevCheck, isLoading: false, success: true }))
-                props.setChangeIng(prevIng => !prevIng)
+                if (res.data.statusCode == 200) {
+                    setFormData({ id: "", name: "", value: "" })
+                    setCheck(prevCheck => ({ ...prevCheck, isLoading: false, success: true }))
+                    props.setChangeIng(prevIng => !prevIng)
+                } else {
+                    setCheck(prevCheck => ({ ...prevCheck, isLoading: false, err: true, success: false }))
+                }
 
                 setTimeout(() => {
                     setCheck(prevCheck => ({ ...prevCheck, err: false, success: false }))
-                }, 2000);
+                }, 3000);
             })
             .catch(error => {
                 console.log(error)
@@ -56,7 +60,7 @@ export default function CadastroIng(props) {
             </form>
 
             <div className="my-2 text-center">
-                {(check.err) && <p className="text-red-500">Ocorreu um erro, tente novamente mais tarde.</p>}
+                {(check.err) && <p className="text-red-500">Esse ingrediente não existe.</p>}
                 {(check.isLoading) && <div className="flex justify-center"><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>}
                 {(check.success) && <p className="text-green-500">Editado com sucesso!</p>}
             </div>

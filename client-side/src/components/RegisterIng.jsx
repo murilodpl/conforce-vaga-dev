@@ -30,13 +30,17 @@ export default function CadastroIng(props) {
         api.post("/Ingrediente/CreateEdit", formData)
             .then(res => {
                 // console.log(res)
-                setFormData({ id: 0, name: "", value: "" })
-                setCheck(prevCheck => ({ ...prevCheck, isLoading: false, success: true }))
-                props.setChangeIng(prevIng => !prevIng)
+                if (res.data.statusCode == 200) {
+                    setFormData({ id: 0, name: "", value: "" })
+                    setCheck(prevCheck => ({ ...prevCheck, isLoading: false, success: true }))
+                    props.setChangeIng(prevIng => !prevIng)
+                } else {
+                    setCheck(prevCheck => ({ ...prevCheck, isLoading: false, err: true, success: false }))
+                }
 
                 setTimeout(() => {
                     setCheck(prevCheck => ({ ...prevCheck, err: false, success: false }))
-                }, 2000);
+                }, 3000);
             })
             .catch(error => {
                 // console.log(error)
