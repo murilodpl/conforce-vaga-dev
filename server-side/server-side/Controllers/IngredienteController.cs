@@ -52,7 +52,7 @@ namespace server_side.Controllers
                 if (ingredienteInDb == null)
                     return new JsonResult(NotFound());
 
-                ingredienteInDb = ingrediente;
+                _context.Entry(ingredienteInDb).CurrentValues.SetValues(ingrediente);
             }
 
             _context.SaveChanges();
