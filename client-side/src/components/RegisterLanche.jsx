@@ -29,7 +29,7 @@ export default function CadastroLanche(props) {
 
     const ingElement = (ing.length != 0) ?
         ing.map((ing, index) => <div key={index}>
-            <input type="checkbox" id={ing.name} name={ing.name} onChange={handleChange} />
+            <input type="checkbox" id={ing.name} name={ing.name} className="text-primary focus:ring-primary" onChange={handleChange} />
             <label htmlFor={ing.name}>{ing.name}</label>
         </div>) : false
 
