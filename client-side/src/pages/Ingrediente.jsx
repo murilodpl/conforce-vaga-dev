@@ -10,8 +10,8 @@ export default function Ingrediente() {
         <div>
             <h1>Ingrediente</h1>
             <RegisterIng setChangeIng={setChangeIng} />
-            <EditIng setChangeIng={setChangeIng} />
             <ShowIng changeIng={changeIng} setChangeIng={setChangeIng} />
+            <EditIng setChangeIng={setChangeIng} />
         </div>
     )
 }

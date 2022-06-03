@@ -1,21 +1,59 @@
 import api from "../services/api"
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function CadastroLanche(props) {
     // Variable
-    const [formData, setFormData] = useState({ id: 0, name: "", value: "" })
-    const [check, setCheck] = useState({ name: false, value: false, err: false, isLoading: false, success: false })
+    const [formData, setFormData] = useState({ id: 0, name: "", ingredientes: [] })
+    const [check, setCheck] = useState({ name: false, ingredientes: false, err: false, isLoading: false, success: false })
+    const [ing, setIng] = useState([]);
+    const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(() => {
+        setIsLoading(true)
+
+        async function getAllIng() {
+            await api.get("/Ingrediente/GetAll")
+                .then(res => {
+                    // console.log(res)
+                    setIng(res.data.value)
+                })
+                .catch(error => {
+                    console.log(error)
+                }).finally(() => {
+                    setIsLoading(false)
+                });
+        }
+        getAllIng();
+
+        return () => setIsLoading(false);
+    }, [props.changeIng])
+
+    const ingElement = (ing.length != 0) ?
+        ing.map((ing, index) => <div key={index}>
+            <input type="checkbox" id={ing.name} name={ing.name} onChange={handleChange} />
+            <label htmlFor={ing.name}>{ing.name}</label>
+        </div>) : false
 
     // Function
     function handleChange(e) {
-        setCheck({ name: false, value: false, err: false, isLoading: false, success: false })
+        setCheck({ name: false, ingredientes: false, err: false, isLoading: false, success: false })
 
-        let { name, value } = e.target
+        let { name, value, type } = e.target
 
-        setFormData(prevData => ({
-            ...prevData,
-            [name]: value
-        }))
+        if (type === "checkbox") {
+            setFormData(prevData => ({
+                ...prevData,
+                "ingredientes": [
+                    ...prevData.ingredientes,
+                    name
+                ]
+            }))
+        } else {
+            setFormData(prevData => ({
+                ...prevData,
+                [name]: value
+            }))
+        }
     }
 
     function createLanche(e) {
@@ -23,15 +61,16 @@ export default function CadastroLanche(props) {
 
         // If field is filled
         if (formData.name == "") { return setCheck(prevCheck => ({ ...prevCheck, name: true })) } else { setCheck(prevCheck => ({ ...prevCheck, name: false })) }
-        if (formData.value == "") { return setCheck(prevCheck => ({ ...prevCheck, value: true })) } else { setCheck(prevCheck => ({ ...prevCheck, value: false })) }
+        if (formData.ingredientes.length == 0) { return setCheck(prevCheck => ({ ...prevCheck, ingredientes: true })) } else { setCheck(prevCheck => ({ ...prevCheck, ingredientes: false })) }
 
         setCheck(prevCheck => ({ ...prevCheck, isLoading: true, err: false }))
+        const formDataFinal = { id: 0, name: formData.name, ingredientes: formData.ingredientes.toString() }
 
-        api.post("/Lanche/CreateEdit", formData)
+        api.post("/Lanche/CreateEdit", formDataFinal)
             .then(res => {
                 // console.log(res)
                 if (res.data.statusCode == 200) {
-                    setFormData({ id: 0, name: "", value: "" })
+                    setFormData({ id: 0, name: "", ingredientes: [] })
                     setCheck(prevCheck => ({ ...prevCheck, isLoading: false, success: true }))
                     props.setChangeLanche(prevLanche => !prevLanche)
                 } else {
@@ -51,8 +90,15 @@ export default function CadastroLanche(props) {
     return (
         <div>
             <form id="formCadastrarLanche">
-                <input className={`${(check.name) && 'border-red-500 ring-red-500 border-2'} lg:col-span-2`} type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Digite o nome do lanche..." required />
-                <input className={`${(check.value) && 'border-red-500 ring-red-500 border-2'} lg:col-span-2`} type="number" name="value" value={formData.value} onChange={handleChange} placeholder="Digite o preço do lanche..." required />
+                <input className={`${(check.name) && 'border-red-500 ring-red-500 border-2'} w-full`} type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Digite o nome do lanche..." required />
+
+                <fieldset className={`${(check.ingredientes) && 'fieldset-error'} border border-primary p-3 my-3 text-white text-[15px]`}>
+                    <legend className="text-primary text-sm">Ingredientes</legend>
+
+                    {(isLoading) ? <div className="flex justify-center lg:col-span-2"><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
+                        : (ingElement) ? ingElement : <p className="lg:col-span-2">Nenhum ingrediente cadastrado.</p>}
+                </fieldset>
+
 
                 <input className="btnRegister" type="submit" onClick={createLanche} value="Cadastrar" />
             </form>

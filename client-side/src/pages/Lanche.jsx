@@ -10,7 +10,7 @@ export default function Lanche() {
         <div>
             <h1>Lanche</h1>
             <RegisterLanche setChangeLanche={setChangeLanche} />
-            <EditLanche setChangeLanche={setChangeLanche} />
+            {/* <EditLanche setChangeLanche={setChangeLanche} /> */}
             {/* <ShowLanche changeLanche={changeLanche} setChangeLanche={setChangeLanche} /> */}
         </div>
     )
