@@ -99,7 +99,7 @@ export default function CadastroLanche(props) {
         <div>
             <form id="formCadastrarLanche">
                 <div className="grid lg:grid-cols-2 items-center gap-4 mb-4">
-                    <label className="text-white" htmlFor="id">Id: <span className="text-primary">(Para cadastrar um novo produto mantenha o Id em 0)</span></label>
+                    <label className="text-white" htmlFor="id">Id: <span className="text-primary">(Para cadastrar um novo lanche mantenha o Id em 0)</span></label>
                     <input type="number" name="id" value={formData.id} onChange={handleChange} />
                 </div>
 

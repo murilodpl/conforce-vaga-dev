@@ -14,7 +14,6 @@ export default function ShowIng(props) {
         async function getAllIng() {
             await api.get("/Ingrediente/GetAll")
                 .then(res => {
-                    // console.log(res)
                     setIng(res.data.value)
                 })
                 .catch(error => {
@@ -32,7 +31,6 @@ export default function ShowIng(props) {
     function deleteIng(id) {
         api.delete(`/Ingrediente/Delete?id=${id}`)
             .then(res => {
-                console.log(res)
                 props.setChangeIng(prevIng => !prevIng)
             })
             .catch(error => {
