@@ -73,7 +73,7 @@ export default function ShowLanche(props) {
                                 </div>
                             </div>
                         </div>
-                        : <p className="my-4 text-center text-primary">Nenhum lanche cadastrado.</p>
+                        : <p className="my-4 text-center text-[#ff8869]">Nenhum lanche cadastrado.</p>
             }
         </>
     )

@@ -2,14 +2,12 @@ import { useState } from 'react'
 import RegisterIng from '../components/RegisterIng'
 import ShowIng from '../components/ShowIng'
 
-export default function Ingrediente() {
-    const [changeIng, setChangeIng] = useState(false)
-
+export default function Ingrediente(props) {
     return (
-        <div>
+        <div className='bg-secondary p-4'>
             <h1>Ingrediente</h1>
-            <RegisterIng setChangeIng={setChangeIng} />
-            <ShowIng changeIng={changeIng} setChangeIng={setChangeIng} />
+            <RegisterIng setChangeIng={props.setChangeIng} />
+            <ShowIng changeIng={props.changeIng} setChangeIng={props.setChangeIng} />
         </div>
     )
 }

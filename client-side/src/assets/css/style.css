@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-    @apply bg-tertiary;
+    @apply bg-tertiary my-4;
 }
 
 h1 {
