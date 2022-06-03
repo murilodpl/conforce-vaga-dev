@@ -25,6 +25,7 @@
       <a href="#sobre-o-projeto">Sobre o projeto</a>
       <ul>
         <li><a href="#feito-com">Feito com</a></li>
+        <li><a href="#instruções">Instruções</a></li>
       </ul>
     </li>
     <li><a href="#contato">Contato</a></li>
@@ -103,6 +104,29 @@ O projeto deverá ser disponibilizado no Github até segunda, 06/06 as 9h.
 
 #### Backend (Server Side)
 * [.NET (C#)](https://dotnet.microsoft.com/en-us/languages/csharp/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+<!-- Instruções -->
+### Instruções
+
+Instalar as dependências no client-side
+
+```bash
+npm i
+```
+
+Modo de desenvolvedor
+- Client side
+```bash
+npm run dev
+```
+
+- Server side
+```bash
+É só abrir o arquivo: "./server-side/server-side/server-side.sln" com o Visual Studio e executa-lo por la.
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
