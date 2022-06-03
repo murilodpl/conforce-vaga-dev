@@ -36,6 +36,12 @@
 <!-- Sobre o projeto -->
 ## Sobre o projeto
 
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <img src="client-side/src/assets/img/img-01.png" alt="Imagem 01" width="300" height="auto">
+    <img src="client-side/src/assets/img/img-02.png" alt="Imagem 02" width="300" height="auto">
+    <img src="client-side/src/assets/img/img-03.png" alt="Imagem 03" width="300" height="auto">
+</div>
+
 **Desafio Fullstack** *(Pastas client-side e server-side)*
 
 Descrição:
