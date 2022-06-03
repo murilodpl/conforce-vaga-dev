@@ -43,7 +43,7 @@ export default function ShowLanche(props) {
             <td>{lanche.id}</td>
             <td>{lanche.name}</td>
             <td>{lanche.ingredientes}</td>
-            <td><button className="btnDeletar" onClick={() => deleteLanche(lanche.id)} aria-label="Botão de deletar"><img width="24px" height="24px" src={trashSvg} alt="Icone de Lixeira" /></button></td>
+            <td><button className="btnDeletar" onClick={() => deleteLanche(lanche.id)} aria-label="Botão de deletar"><img className="w-6 h-6" width="24px" height="24px" src={trashSvg} alt="Icone de Lixeira" /></button></td>
         </tr>) : false
 
     return (

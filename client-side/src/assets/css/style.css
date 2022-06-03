@@ -6,6 +6,12 @@ html {
     @apply bg-tertiary my-4;
 }
 
+@media (min-width: 1024px) and (max-width: 1500px) {
+    html {
+        font-size: 12px;
+    }
+}
+
 h1 {
     @apply text-xl lg:text-2xl text-primary font-bold mb-2;
 }
@@ -67,18 +73,18 @@ table th {
 
 /* Loading */
 .lds-roller {
-    @apply inline-block relative w-[80px] h-[80px];
+    @apply inline-block relative w-20 h-20;
     -webkit-transform: scale(.5);
 }
 
 .lds-roller div {
     animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    transform-origin: 40px 40px;
+    transform-origin: 2.5rem 2.5rem;
 }
 
 .lds-roller div:after {
     content: " ";
-    @apply block absolute w-[7px] h-[7px] rounded-[50%] bg-white -mt-1 -ml-1;
+    @apply block absolute w-[0.4375rem] h-[0.4375rem] rounded-[50%] bg-white -mt-1 -ml-1;
 }
 
 .lds-roller div:nth-child(1) {
@@ -86,7 +92,7 @@ table th {
 }
 
 .lds-roller div:nth-child(1):after {
-    @apply top-[63px] left-[63px];
+    @apply top-[3.9375rem] left-[3.9375rem];
 }
 
 .lds-roller div:nth-child(2) {
@@ -94,7 +100,7 @@ table th {
 }
 
 .lds-roller div:nth-child(2):after {
-    @apply top-[68px] left-[56px];
+    @apply top-[4.25rem] left-14;
 }
 
 .lds-roller div:nth-child(3) {
@@ -102,7 +108,7 @@ table th {
 }
 
 .lds-roller div:nth-child(3):after {
-    @apply top-[71px] left-[48px];
+    @apply top-[4.4375rem] left-12;
 }
 
 .lds-roller div:nth-child(4) {
@@ -110,7 +116,7 @@ table th {
 }
 
 .lds-roller div:nth-child(4):after {
-    @apply top-[72px] left-[40px];
+    @apply top-[4.5rem] left-10;
 }
 
 .lds-roller div:nth-child(5) {
@@ -118,7 +124,7 @@ table th {
 }
 
 .lds-roller div:nth-child(5):after {
-    @apply top-[71px] left-[32px];
+    @apply top-[4.4375rem] left-8;
 }
 
 .lds-roller div:nth-child(6) {
@@ -126,7 +132,7 @@ table th {
 }
 
 .lds-roller div:nth-child(6):after {
-    @apply top-[68px] left-[24px];
+    @apply top-[4.25rem] left-6;
 }
 
 .lds-roller div:nth-child(7) {
@@ -134,7 +140,7 @@ table th {
 }
 
 .lds-roller div:nth-child(7):after {
-    @apply top-[63px] left-[17px];
+    @apply top-[3.9375rem] left-[1.0625rem];
 }
 
 .lds-roller div:nth-child(8) {
@@ -142,7 +148,7 @@ table th {
 }
 
 .lds-roller div:nth-child(8):after {
-    @apply top-[56px] left-[12px];
+    @apply top-14 left-3;
 }
 
 @keyframes lds-roller {

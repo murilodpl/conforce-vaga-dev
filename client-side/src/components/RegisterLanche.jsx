@@ -105,7 +105,7 @@ export default function CadastroLanche(props) {
 
                 <input className={`${(check.name) && 'border-red-500 ring-red-500 border-2'} w-full`} type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Digite o nome do lanche..." required />
 
-                <fieldset className={`${(check.ingredientes) && 'fieldset-error'} border border-primary p-3 my-3 text-white text-[15px]`}>
+                <fieldset className={`${(check.ingredientes) && 'fieldset-error'} border border-primary p-3 my-3 text-white text-[0.9375rem]`}>
                     <legend className="text-primary text-sm">Ingredientes</legend>
 
                     {(isLoading) ? <div className="flex justify-center lg:col-span-2"><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>
