@@ -7,14 +7,13 @@ export default function ShowLanche(props) {
     const [lanche, setLanche] = useState([]);
     const [isLoading, setIsLoading] = useState(false)
 
-    // Get All Ingredientes
+    // Get All Lanches
     useEffect(() => {
         setIsLoading(true)
 
         async function getAllLanche() {
             await api.get("/Lanche/GetAll")
                 .then(res => {
-                    // console.log(res)
                     setLanche(res.data.value)
                 })
                 .catch(error => {
@@ -32,7 +31,6 @@ export default function ShowLanche(props) {
     function deleteLanche(id) {
         api.delete(`/Lanche/Delete?id=${id}`)
             .then(res => {
-                console.log(res)
                 props.setChangeLanche(prevLanche => !prevLanche)
             })
             .catch(error => {
@@ -44,7 +42,7 @@ export default function ShowLanche(props) {
         lanche.map((lanche, index) => <tr className="relative" key={index}>
             <td>{lanche.id}</td>
             <td>{lanche.name}</td>
-            <td>R$ {lanche.value.toFixed(2)}</td>
+            <td>{lanche.ingredientes}</td>
             <td><button className="btnDeletar" onClick={() => deleteLanche(lanche.id)} aria-label="Botão de deletar"><img width="24px" height="24px" src={trashSvg} alt="Icone de Lixeira" /></button></td>
         </tr>) : false
 
@@ -63,7 +61,7 @@ export default function ShowLanche(props) {
                                                 <tr>
                                                     <th scope="col">Id</th>
                                                     <th scope="col">Nome</th>
-                                                    <th scope="col">Preço</th>
+                                                    <th scope="col">Ingredientes</th>
                                                     <th scope="col">Deletar</th>
                                                 </tr>
                                             </thead>
